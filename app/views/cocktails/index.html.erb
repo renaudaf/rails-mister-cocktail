@@ -1,5 +1,14 @@
-<h1>Cocktails</h1>
-<% @cocktails.each do |cocktail| %>
-<h1><%= link_to cocktail.name, cocktail_path(cocktail)  %></h1>
-<% end %>
-<%= link_to  "Add a cocktail", new_cocktail_path %>
+<div class="container">
+ <h1 class='mt-2'>Cocktails</h1>
+
+  <div class="card-group">
+   <% @cocktails.each do |cocktail| %>
+    <div class="card m-4" style="width: 18rem;">
+     <img src="https://www.thespruceeats.com/thmb/MqGv7imLKyo0hh5be9SKDdLxtH8=/668x668/smart/filters:no_upscale()/mojito-5a8f339fba61770036ec61d8.jpg" class="card-img-top" alt="...">
+     <div class="card-body ">
+      <h1><%= link_to cocktail.name, cocktail_path(cocktail)  %></h1>
+     </div>
+    </div>
+   <% end %>
+ </div>
+</div>

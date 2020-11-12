@@ -1,6 +1,8 @@
-<h1>New cocktail</h1>
-<%= simple_form_for [@cocktail, @dose] do |f|  %>
- <%= f.input :description %>
- <%= f.association :ingredient, type: 'select', collection: Ingredient.all %>
- <%= f.submit %>
-<% end %>
+<div class="container">
+ <h1 class='mt-2'>New dose</h1>
+ <%= simple_form_for [@cocktail, @dose] do |f|  %>
+  <%= f.input :description %>
+  <%= f.association :ingredient, type: 'select', collection: Ingredient.all %>
+  <%= f.submit %>
+ <% end %>
+</div>
