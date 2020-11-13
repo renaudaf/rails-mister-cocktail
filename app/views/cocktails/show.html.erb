@@ -1,16 +1,21 @@
 <div class="container">
  <h1 class='mt-2'><%= @cocktail.name %></h1>
 
- <div class="cocktail-container">
-  <ul class="list-group">
-   <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.description %>
-    <%= dose.ingredient.name %>  
-    <%= link_to "Remove",
-                    dose_path(dose),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %></li>
-  <% end %>
+ <div class="cocktail-container d-flex">
+  <p> <%= cl_image_tag @cocktail.photo.key, width: 400, height: 400 %></p>
+  <div class="dose-container pl-5">
+    <h2 class="pb-2" > Ingredients </h2>
+    <ul class="list-group">
+      <% @cocktail.doses.each do |dose| %>
+        <li> <i class="fas fa-smoking"></i>  <%= dose.description %>
+        <%= dose.ingredient.name %>  
+        <%= link_to "Remove",
+                      dose_path(dose),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %></li>
+      <% end %>
+    </ul>
+  </div>
  </div>
  <div class="link-container d-flex">
   <%= link_to  "Add a dose", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary m-2' %>
