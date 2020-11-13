@@ -30,7 +30,7 @@
     <ul class="list-group">
     <% @cocktail.reviews.each do |review| %>
       <li><%= '⭐️' * review.rating %></li>
-      <li> - <%= review.content %></li>
+      <li><i class="fas fa-smoking"></i> <%= review.content %></li>
     <% end %>
     </ul>
     <%= link_to 'Leave a review', new_cocktail_review_path(@cocktail), class: "btn btn-primary mt-3" %>
