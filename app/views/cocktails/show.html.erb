@@ -25,14 +25,14 @@
     </div>
   </div>
  </div>
- <div class="review-container">
+ <div class="review-container mb-3">
   <h2>Reviews</h2>
     <ul class="list-group">
     <% @cocktail.reviews.each do |review| %>
       <li><%= '⭐️' * review.rating %></li>
-      <li><%= review.content %></li>
+      <li> - <%= review.content %></li>
     <% end %>
     </ul>
-    <%= link_to 'Leave a review', new_cocktail_review_path(@cocktail), class: "btn btn-primary" %>
+    <%= link_to 'Leave a review', new_cocktail_review_path(@cocktail), class: "btn btn-primary mt-3" %>
  </div>
 </div>
