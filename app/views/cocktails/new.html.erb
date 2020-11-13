@@ -3,8 +3,6 @@
  <%= simple_form_for(@cocktail) do |f|  %>
   <%= f.input :name %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
  <% end %>
-
- <%= link_to  "Home", cocktails_path %>
 </div>
