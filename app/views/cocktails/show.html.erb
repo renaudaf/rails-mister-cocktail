@@ -3,7 +3,7 @@
 
  <div class="cocktail-container d-flex">
   <p> <%= cl_image_tag @cocktail.photo.key, width: 400, height: 400, class: "shadow-sm mb-5 rounded" %></p>
-  <div class="dose-container pl-5">
+  <div class="dose-container pxt-5">
    <div class="ingredient-container pl-5">
       <h2 class="pb-2" > Ingredients </h2>
       <ul class="list-group">
@@ -16,13 +16,23 @@
                         data: { confirm: "Are you sure?" } %></li>
         <% end %>
     </ul>
-      <%= link_to  "Add ingredients", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary m-2' %>
+      <%= link_to  "Add ingredients", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary mt-4' %>
     </div>
     <div class="description-container pl-5 mt-5">
       <h2>Description</h2>
       <p> <%= @cocktail.description %></p>
-      <%= link_to  "Add a description", edit_cocktail_path(@cocktail), class: 'btn btn-primary m-2' %>
+      <%= link_to  "Edit Description", edit_cocktail_path(@cocktail), class: 'btn btn-primary mt-4' %>
     </div>
   </div>
+ </div>
+ <div class="review-container">
+  <h2>Reviews</h2>
+    <ul class="list-group">
+    <% @cocktail.reviews.each do |review| %>
+      <li><%= '⭐️' * review.rating %></li>
+      <li><%= review.content %></li>
+    <% end %>
+    </ul>
+    <%= link_to 'Leave a review', new_cocktail_review_path(@cocktail), class: "btn btn-primary" %>
  </div>
 </div>
