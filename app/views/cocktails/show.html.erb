@@ -1,28 +1,28 @@
 <div class="container">
- <h1 class='mt-2'><%= @cocktail.name %></h1>
+ <h1 class='mt-4'><%= @cocktail.name %></h1>
 
  <div class="cocktail-container d-flex">
-  <p> <%= cl_image_tag @cocktail.photo.key, width: 400, height: 400 %></p>
+  <p> <%= cl_image_tag @cocktail.photo.key, width: 400, height: 400, class: "shadow-sm mb-5 rounded" %></p>
   <div class="dose-container pl-5">
-    <h2 class="pb-2" > Ingredients </h2>
-    <ul class="list-group">
-      <% @cocktail.doses.each do |dose| %>
-        <li> <i class="fas fa-smoking"></i>  <%= dose.description %>
-        <%= dose.ingredient.name %>  
-        <%= link_to "Remove",
-                      dose_path(dose),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %></li>
-      <% end %>
+   <div class="ingredient-container pl-5">
+      <h2 class="pb-2" > Ingredients </h2>
+      <ul class="list-group">
+        <% @cocktail.doses.each do |dose| %>
+          <li> <i class="fas fa-smoking"></i>  <%= dose.description %>
+          <%= dose.ingredient.name %>  
+          <%= link_to "Remove",
+                        dose_path(dose),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %></li>
+        <% end %>
     </ul>
+      <%= link_to  "Add ingredients", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary m-2' %>
+    </div>
+    <div class="description-container pl-5 mt-5">
+      <h2>Description</h2>
+      <p> <%= @cocktail.description %></p>
+      <%= link_to  "Add a description", edit_cocktail_path(@cocktail), class: 'btn btn-primary m-2' %>
+    </div>
   </div>
- </div>
- <div class="link-container d-flex">
-  <%= link_to  "Add a dose", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary m-2' %>
-    <%= link_to "Remove drink",
-                    cocktail_path(@cocktail),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" }, 
-                    class: 'btn btn-primary m-2' %>
  </div>
 </div>

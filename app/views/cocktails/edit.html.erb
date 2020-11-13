@@ -1,0 +1,7 @@
+<div class="container">
+ <h1 class='mt-2'>Add/Edit description</h1>
+ <%= simple_form_for(@cocktail) do |f|  %>
+  <%= f.input :description %>
+  <%= f.submit "Submit Ya description mate", class: "btn btn-primary" %>
+ <% end %>
+</div>
