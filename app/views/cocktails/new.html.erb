@@ -1,9 +1,9 @@
 <div class="container">
- <h1 class='mt-2'>New cocktail</h1>
+ <h1 class='mt-4'>New cocktail</h1>
  <%= simple_form_for(@cocktail) do |f|  %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit "Submit Ya Cocktail Mate", class: "btn btn-primary" %>
+  <%= f.submit "Submit your cocktail", class: "btn btn-primary" %>
  <% end %>
 </div>

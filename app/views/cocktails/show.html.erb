@@ -1,38 +1,39 @@
 <div class="container">
- <h1 class='mt-4'><%= @cocktail.name %></h1>
-
- <div class="cocktail-container d-flex">
-  <p> <%= cl_image_tag @cocktail.photo.key, width: 400, height: 400, class: "shadow-sm mb-5 rounded" %></p>
-  <div class="dose-container pxt-5">
-   <div class="ingredient-container pl-5">
-      <h2 class="pb-2" > Ingredients </h2>
-      <ul class="list-group">
-        <% @cocktail.doses.each do |dose| %>
-          <li> <i class="fas fa-smoking"></i>  <%= dose.description %>
-          <%= dose.ingredient.name %>  
-          <%= link_to "Remove",
+  <h1 class='mt-4'><%= @cocktail.name %></h1>
+  <div class="cocktail-container">
+    <p> <%= cl_image_tag @cocktail.photo.key, width: 400, height: 400, class: "cocktail-show-img" %></p>
+    <div class="dose-container">
+      <div class="ingredient-container">
+        <h2 class="pb-2" > Ingredients </h2>
+        <ul class="list-group">
+          <% @cocktail.doses.each do |dose| %>
+            <li> <i class="fas fa-smoking"></i>  <%= dose.description %>
+              <%= dose.ingredient.name %>
+              <%= link_to "Remove",
                         dose_path(dose),
                         method: :delete,
                         data: { confirm: "Are you sure?" } %></li>
-        <% end %>
-    </ul>
-      <%= link_to  "Add ingredients", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary mt-4' %>
-    </div>
-    <div class="description-container pl-5 mt-5">
-      <h2>Description</h2>
-      <p> <%= @cocktail.description %></p>
-      <%= link_to  "Edit Description", edit_cocktail_path(@cocktail), class: 'btn btn-primary mt-4' %>
+          <% end %>
+        </ul>
+        <%= link_to  "Add ingredients", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary mt-4' %>
+      </div>
+      <div class="description-container">
+        <h2>Description</h2>
+        <p> <%= @cocktail.description %></p>
+        <%= link_to  "Edit Description", edit_cocktail_path(@cocktail), class: 'btn btn-primary mt-4' %>
+      </div>
     </div>
   </div>
- </div>
- <div class="review-container mb-3">
-  <h2>Reviews</h2>
+  <div class="reviews-container mb-3">
+    <h2>Reviews</h2>
     <ul class="list-group">
-    <% @cocktail.reviews.each do |review| %>
-      <li><%= '⭐️' * review.rating %></li>
-      <li> - <%= review.content %></li>
-    <% end %>
+      <% @cocktail.reviews.each do |review| %>
+        <div class="review-content">
+          <li><%= '⭐️' * review.rating %></li>
+          <li><i class="fas fa-smoking"></i> <%= review.content %></li>
+        </div>
+      <% end %>
     </ul>
     <%= link_to 'Leave a review', new_cocktail_review_path(@cocktail), class: "btn btn-primary mt-3" %>
- </div>
+  </div>
 </div>
