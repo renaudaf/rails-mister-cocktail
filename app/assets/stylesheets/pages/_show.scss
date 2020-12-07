@@ -6,17 +6,31 @@ li {
  display: flex;
 }
 
-.dose-container {
- padding-top: 48px;
-}
-
 .ingredient-container {
  padding-left: 48px;
+}
+
+#dose-form {
+ display: none;
+}
+
+.ingredient-content {
+ margin-top: 10px;
+ margin-bottom: 10px;
+ padding: 10px;
 }
 
 .description-container {
  padding-left: 48px;
  margin-top: 48px;
+}
+
+.description-content {
+ display: flex;
+ align-items: center;
+ padding: 10px;
+ margin-top: 10px;
+ margin-bottom: 10px;
 }
 
 .reviews-container {
@@ -25,4 +39,8 @@ li {
 
 .review-content {
  margin: 10px;
+}
+
+#review-form {
+ display: none;
 }

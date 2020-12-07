@@ -4,36 +4,51 @@
     <p> <%= cl_image_tag @cocktail.photo.key, width: 400, height: 400, class: "cocktail-show-img" %></p>
     <div class="dose-container">
       <div class="ingredient-container">
-        <h2 class="pb-2" > Ingredients </h2>
+        <h2> Ingredients </h2>
         <ul class="list-group">
           <% @cocktail.doses.each do |dose| %>
-            <li> <i class="fas fa-smoking"></i>  <%= dose.description %>
-              <%= dose.ingredient.name %>
-              <%= link_to "Remove",
-                        dose_path(dose),
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } %></li>
+            <div class="ingredient-content">
+              <li> <i class="fas fa-smoking"></i>  <%= dose.description %>
+                <%= dose.ingredient.name %>
+                <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <span><i class="far fa-trash-alt"></i></span>
+                <% end %>
+              </li>
+            </div>
           <% end %>
         </ul>
-        <%= link_to  "Add ingredients", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary mt-4' %>
+        <%= render "/doses/new" %>
+        <button type="button" onclick="document.getElementById('dose-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add an ingredient</button>
       </div>
       <div class="description-container">
         <h2>Description</h2>
-        <p> <%= @cocktail.description %></p>
-        <%= link_to  "Edit Description", edit_cocktail_path(@cocktail), class: 'btn btn-primary mt-4' %>
+        <div class="description-content">
+          <% if @cocktail.description.nil? %>
+            <p> <i class="fas fa-smoking"></i> There is no description for this cocktail.</p>
+          <% else %>
+            <p><i class="fas fa-smoking"></i> <%= @cocktail.description %></p>
+          <% end %>
+        </div>
+        <%= link_to  "Edit Description", edit_cocktail_path(@cocktail), class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
   <div class="reviews-container mb-3">
     <h2>Reviews</h2>
     <ul class="list-group">
-      <% @cocktail.reviews.each do |review| %>
-        <div class="review-content">
-          <li><%= '⭐️' * review.rating %></li>
-          <li><i class="fas fa-smoking"></i> <%= review.content %></li>
-        </div>
-      <% end %>
-    </ul>
-    <%= link_to 'Leave a review', new_cocktail_review_path(@cocktail), class: "btn btn-primary mt-3" %>
+      <% if @cocktail.reviews.empty? %>
+        <p>There is no review for this cocktail</p>
+      <% else %>
+        <% @cocktail.reviews.each do |review| %>
+          <div class="review-content">
+            <li><%= '⭐️' * review.rating %></li>
+            <li><i class="fas fa-smoking"></i> <%= review.content %></li>
+          </div>
+        <% end %>
+      </ul>
+    <% end %>
+    </div>
+    <%= render "reviews/new" %>
+    <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add a review</button>
   </div>
 </div>
