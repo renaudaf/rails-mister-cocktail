@@ -9,8 +9,8 @@ Ingredient.destroy_all
 
 puts "Filling database"
 
-url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-ingredients_serialized = open(url).read
+filepath = 'db/ingredients.json'
+ingredients_serialized = open(filepath).read
 ingredients = JSON.parse(ingredients_serialized)
 
 i = ingredients["drinks"]
@@ -24,12 +24,12 @@ file = URI.open('https://noseychef.com/wp-content/uploads/2018/07/IMG_3791.jpg')
 cuba_libre.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 cuba_libre.save!
 
-mojito = Cocktail.new(name: "Mojito", description: "Mojito is a traditional Cuban highball. The cocktail often consists of five ingredients: white rum, sugar (traditionally sugar cane juice), lime juice, soda water, and mint.[1][2] Its combination of sweetness, citrus, and herbaceous mint flavours is intended to complement the rum, and has made the mojito a popular summer drink.")
+mojito = Cocktail.new(name: "Mojito", description: "Mojito is a traditional Cuban highball. The cocktail often consists of five ingredients: white rum, sugar (traditionally sugar cane juice), lime juice, soda water, and mint. Its combination of sweetness, citrus, and herbaceous mint flavours is intended to complement the rum, and has made the mojito a popular summer drink.")
 file = URI.open('http://noseychef.com/wp-content/uploads/2018/05/mohjito.jpg')
 mojito.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 mojito.save!
 
-gin_n_tonic = Cocktail.new(name: "Gin Tonic", description: "A gin and tonic or, less frequently, gin tonic, is a highball cocktail made with gin and tonic water poured over a large amount of ice.[1] The ratio of gin to tonic varies according to taste, strength of the gin, other drink mixers being added, etc., with most recipes calling for a ratio between 1:1 and 1:3. It is usually garnished with a slice or wedge of lime.")
+gin_n_tonic = Cocktail.new(name: "Gin Tonic", description: "A gin and tonic or, less frequently, gin tonic, is a highball cocktail made with gin and tonic water poured over a large amount of ice. The ratio of gin to tonic varies according to taste, strength of the gin, other drink mixers being added, etc, with most recipes calling for a ratio between 1:1 and 1:3. It is usually garnished with a slice or wedge of lime.")
 file = URI.open('http://noseychef.com/wp-content/uploads/2018/04/hendrickstonic.jpg')
 gin_n_tonic.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 gin_n_tonic.save!
