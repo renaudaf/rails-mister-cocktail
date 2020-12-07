@@ -8,6 +8,9 @@ li {
 
 .ingredient-container {
  padding-left: 48px;
+ a {
+  color: $main-color;
+ }
 }
 
 #dose-form {
